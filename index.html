@@ -21,6 +21,7 @@
     <link href="css/one-page-wonder.min.css" rel="stylesheet">
 
   </head>
+    
 
   <body>
     <header class="masthead text-center text-white">
@@ -36,6 +37,8 @@
       <div class="bg-circle-3 bg-circle"></div>
       <div class="bg-circle-4 bg-circle"></div>
     </header>
+      
+      
 
  
 
@@ -68,30 +71,99 @@
           <div class="col-lg-6 order-lg-1">
             <div class="p-5">
               <h2 class="display-4">Publish New Event</h2>
-                 
-                
-             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>-->
             </div> 
               
-              <form >
+            
+              
+              <form id="contactForm"  method="POST" action="Page2.html" >
+                    Enter event title<br>
+  <input name="firstname" type="text" id = "firstname"   ><br><br><br>
                   
-                  Enter event title<br>
-  <input name="firstname" type="text"><br><br><br>
                  What type of event?<br>
-  <input type="radio" name="colors" id="red">charity<br>
-  <input type="radio" name="colors" id="blue">Personal<br><br><br>
+  <input type="radio" name="colors" onClick="radiobutton();" value="charity" id = "r1">charity<br>
+  <input type="radio" name="colors" onClick="radiobutton();" value="Personal" id = "r2">Personal<br><br><br>
                   
+   
                  Who are the visitors?<br>
-<input type="checkbox"  id="lang_1" value="de"/> Men<br>
-<input type="checkbox"  id="lang_2" value="us"/> Women<br>
-<input type="checkbox"  id="lang_3" value="ru"/> Children <br><br><br>
+        <input type="checkbox" id="bk" name="vehicle" onClick="checkbox();" value="Women"  >Women<br>
+        <input type="checkbox" id="cr" name="vehicle" onClick="checkbox();" value="Men">Men<br>
+            <input type="checkbox" id="cr" name="vehicle" onClick="checkbox();" value="Kids">Kids<br><br><br>
+     
+                 Subject<br>
+                        <select id="subject">
+                            <option value="Math">Math</option>
+                            <option value="Physics">Physics</option>
+                            <option value="Chemistry">Chemistry</option>
+                            <option value="English">English</option>
+                            <option value="Tamil">Tamil</option>
+                        </select> <br><br>
                   
-                   
+             
+   
+                 <input type="submit" value="Publish" class="btn btn-primary btn-xl rounded-pill mt-5"  
+       
+                     /><br><br><br>
+                  
+                   <script>
+                     var radioBchecked ;
+                     var checkboxesChecked = [];  
+                       window.onload = function() {
+                         
+
+    // Add an event listener for form submissions
+    document.getElementById('contactForm').addEventListener('submit', function() {
+      // Get the value of the name field.
+      var name = document.getElementById('firstname').value;
+      var select = document.getElementById('subject').value;
+      //  var checkboxes = checkboxesChecked;
+      // Save the name in localStorage.
+      localStorage.setItem('u1', name);
+      localStorage.setItem('u2', select);
+      localStorage.setItem('u3', checkboxesChecked);
+     localStorage.setItem('u4', radioBchecked);
+    
+    
+    
+    });
+  
+
+}
+                       
+                       function checkbox(){
+  
+  var checkboxes = document.getElementsByName('vehicle');
+  checkboxesChecked = [];
+  // loop over them all
+  for (var i=0; i<checkboxes.length; i++) {
+     // And stick the checked ones onto an array...
+     if (checkboxes[i].checked) {
+        checkboxesChecked.push(checkboxes[i].value);
+     }
+  }
+ 
+
+}
+                 
+     
+    function radiobutton(){
+        
+        if(document.getElementById("r1").checked){
+            
+         radioBchecked = document.getElementById("r1").value;}
+           if(document.getElementById("r2").checked){
+            
+         radioBchecked = document.getElementById("r2").value;  
+ 
+     }
+    }
+                
+                     
+                          </script>
+                  
+                       
                   
 </form>
-              
-              
-              <a href="google.com" class="btn btn-primary btn-xl rounded-pill mt-5">Publish</a>
+               
     
           </div>
         </div>
@@ -105,7 +177,7 @@
     <!-- Footer -->
     <footer class="py-5 bg-black">
       <div class="container">
-        <p class="m-0 text-center text-white small">Copyright &copy; Your Website 2018</p>
+        <p class="m-0 text-center text-white small">Copyright &copy; MY First Website 2018</p>
       </div>
       <!-- /.container -->
     </footer>
@@ -117,5 +189,3 @@
   </body>
 
 </html>
-
-
